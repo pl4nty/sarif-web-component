@@ -46,6 +46,18 @@ const readAsText = file => new Promise<string>((resolve, reject) => {
 		}
 		this.sample = JSON.parse(await readAsText(file))
 	}
+	async componentDidMount() {
+		const url = new URLSearchParams(window.location.search).get('url')
+		if (url) {
+			try {
+				const response = await fetch(url)
+				if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`)
+				this.sample = await response.json()
+			} catch (e) {
+				alert(`Failed to load SARIF from URL: ${e.message}`)
+			}
+		}
+	}
 	render() {
 		return <>
 			<div className="demoHeader">
