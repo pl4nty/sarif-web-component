@@ -59,22 +59,6 @@ const readAsText = file => new Promise<string>((resolve, reject) => {
 	}
 
 	componentDidMount() {
-		const url = new URLSearchParams(window.location.search).get('url')
-		if (url) {
-			fetch(url)
-				.then(response => {
-					if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`)
-					return response.json()
-				})
-				.then(log => {
-					runInAction(() => {
-						this.discussionId = url
-						this.logs = [log]
-					})
-				})
-				.catch(e => alert(`Failed to load SARIF from URL: ${e.message}`))
-			return
-		}
 		const logName = localStorage.getItem('logName')
 		const log = localStorage.getItem('log')
 		runInAction(() => {
