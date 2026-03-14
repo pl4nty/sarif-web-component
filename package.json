@@ -19,6 +19,7 @@
 		"@babel/preset-env": "^7.4.5",
 		"@types/enzyme": "3.10.8",
 		"@types/jest": "^27.0.4",
+		"@types/minimatch": "^5.1.2",
 		"@types/react": "^16.8.18",
 		"@types/react-dom": "^16.8.4",
 		"@types/sarif": "^2.1.3",
